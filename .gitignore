@@ -1,3 +1,6 @@
-node_modules
-vendor
-build
+node_modules/
+bower_components/
+.sass-cache/
+.idea/
+.tmp/
+dist/

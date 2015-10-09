@@ -11,11 +11,16 @@
       .state('home', {
         url: '/',
         templateUrl: 'app/main/main.html',
-        controller: 'MainController',
-        controllerAs: 'main'
+        controller: 'MainController'
+      })
+      .state('home.login', {
+        url: 'logIn',
+        templateUrl: 'app/login/login.html',
+        controller: 'LoginController'
       });
 
     $urlRouterProvider.otherwise('/');
+
   }
 
 })();

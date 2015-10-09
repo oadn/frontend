@@ -5,6 +5,8 @@
     <title>frontend</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="/socket.io/socket.io.js"></script>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
@@ -12,6 +14,7 @@
     <!-- run `gulp inject` to automatically populate bower styles dependencies -->
     <!-- endbower -->
     <!-- endbuild -->
+    <link rel="stylesheet" href="/bower_components/angular-form-for/dist/form-for.material.css"/>
 
     <!-- build:css({.tmp/serve,src}) styles/app.css -->
     <!-- inject:css -->
@@ -23,14 +26,27 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-    <div ui-view></div>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button">
+          <md-icon md-font-set="material-icons"> menu </md-icon>
+        </md-button>
+        <span><a ui-sref="home">inkDNA</a></span>
+        <!-- fill up the space between left and right area -->
+        <span flex></span>
+        <md-button ui-sref="home.login">
+          Login
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-content ui-view layout-padding></md-content>
 
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
     <!-- run `gulp inject` to automatically populate bower script dependencies -->
     <!-- endbower -->
     <!-- endbuild -->
+    <script src="/bower_components/angular-form-for/dist/form-for.material-templates.js"></script>
 
     <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
     <!-- inject:js -->

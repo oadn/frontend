@@ -5,7 +5,7 @@
  *  which are used in several places to keep good readability
  *  of the tasks
  */
-
+var path = require('path');
 var gutil = require('gulp-util');
 
 /**
@@ -18,6 +18,11 @@ exports.paths = {
   e2e: 'e2e'
 };
 
+var backendPath = path.join(__dirname, '..', '..','backend-db');
+exports.backend = {
+  path: backendPath,
+  url: 'http://localhost:'+require(path.join(backendPath, 'config.json')).port
+}
 /**
  *  Wiredep is the lib which inject bower dependencies in your project
  *  Mainly used to inject script tags in the index.html but also used

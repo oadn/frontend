@@ -1,0 +1,7 @@
+{
+  "backend": {
+    "url": "http://localhost:3002",
+    "version": "v1"
+  },
+  "port": 3001
+}

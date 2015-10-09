@@ -60,8 +60,8 @@ gulp.task('html', ['inject', 'partials'], function () {
       conditionals: true
     }))
     .pipe(htmlFilter.restore())
-    .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
-    .pipe($.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }));
+    .pipe(gulp.dest(path.join(conf.paths.dist, 'static')))
+    .pipe($.size({ title: path.join(conf.paths.dist, 'static'), showFiles: true }));
 });
 
 // Only applies for fonts from bower dependencies
@@ -70,7 +70,7 @@ gulp.task('fonts', function () {
   return gulp.src($.mainBowerFiles())
     .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
     .pipe($.flatten())
-    .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')));
+    .pipe(gulp.dest(path.join(conf.paths.dist, 'static','fonts')));
 });
 
 gulp.task('other', function () {
@@ -83,11 +83,17 @@ gulp.task('other', function () {
     path.join('!' + conf.paths.src, '/**/*.{html,css,js,scss,jade}')
   ])
     .pipe(fileFilter)
-    .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
+    .pipe(gulp.dest(path.join(conf.paths.dist, 'static')));
 });
+
+gulp.task('index', function() {
+  return gulp
+    .src([path.join(conf.paths.src, '..', 'index.js'), path.join(conf.paths.src, '..', 'package.json')])
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
+})
 
 gulp.task('clean', function (done) {
   $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/')], done);
 });
 
-gulp.task('build', ['html', 'fonts', 'other']);
+gulp.task('build', ['html', 'fonts', 'other', 'index']);

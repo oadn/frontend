@@ -11,18 +11,30 @@ var async = require('async');
 
 var sessionMiddleware = session({
     //store: new RedisStore({}), // XXX redis server config
+    resave: false,
+    saveUninitialized: false,
     secret: "c76f1109b5c6b41c88e40181b733cd2c",
 });
 
 app.use(sessionMiddleware);
 switch(process.env.NODE_ENV) {
   case "development":
-    app.use(express.static(process.env.FE_TMP_PATH));
-    app.use(express.static(process.env.FE_SRC_PATH));
+    app.use(function(req, res, next) {
+      console.log('tmp '+req.url);
+      next();
+    });
+    app.use(express.static(path.join(__dirname, process.env.FE_TMP_PATH)));
+    app.use(function(req, res, next) {
+      console.log('src '+req.url);
+      next();
+    });
+    app.use(express.static(path.join(__dirname, process.env.FE_SRC_PATH)));
     app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
     break;
   default:
-    app.use(express.static(path.join(__dirname, 'static')))
+    console.log('modo no dev');
+    app.use(express.static(path.join(__dirname, 'static')));
+    break;
 }
 
 app.get('/backend', function(req, res, next) {

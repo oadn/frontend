@@ -12,7 +12,8 @@
       'ngMaterial',
       'btford.socket-io',
       'formFor',
-      'formFor.materialTemplates'
+      'formFor.materialTemplates',
+      'oadn.photo'
     ]);
 
 })();

@@ -1,0 +1,76 @@
+<md-card-content>
+  <h3>{{formTitle}}</h3>
+  <md-divider></md-divider>
+
+  <div ng-repeat="tab in tabs" ng-show="tabIndex == $index" layout="column" layout-align="center center" layout-padding layout-margin layout-fill>
+    <h4>{{tab.title}}</h4>
+
+    <ng-include src="tab.src"></ng-include>
+  </div>
+</md-card-content>
+<script type="text/ng-template" id="templates/signInData.html">
+  <div layout="row">
+    <div layout="column">
+      <p>Enter Sign In Data</p>
+      <form ng-submit="next()">
+        <md-input-container>
+          <label>Mail</label>
+          <input type="email" ng-model="data.mail">
+        </md-input-container>
+        <md-input-container>
+          <label>User Name</label>
+          <input type="text" ng-model="data.name">
+        </md-input-container>
+        <md-input-container>
+          <label>Password</label>
+          <input type="password" ng-model="data.pass">
+        </md-input-container>
+        <md-input-container>
+          <label>Confirm Password</label>
+          <input type="password" ng-model="data.confirm">
+        </md-input-container>
+        <md-button>Submit</md-button>
+      </form>
+    </div>
+    <div>OR</div>
+    <div layout="column">
+      <p>Register through external account</p>
+    </div>
+  </div>
+</script>
+<script type="text/ng-template" id="templates/aliases.html">
+  <div layout="column">
+    <md-chips class="alias-chips">
+      <md-chip ng-repeat="alias in aliases" layout-align="center center" class="oadn-chip">
+        <div class="md-chip-content">
+          <div class="oadn-contact-avatar">
+            <img class="oadn-avatar" ng-src="{{alias.image}}" />
+          </div>
+          <div class="oadn-contact-data" layout="column">
+            <h3>{{alias.name}}</h2>
+            <div>@{{alias.id}}</div>
+          </div>
+        </div>
+        <button class="md-chip-remove" type="button" ng-click="rm($index)">
+          <md-icon md-svg-icon="md-close" />
+        </button>
+      </md-chip>
+    </md-chips>
+    <form ng-submit="add()">
+      <div layout="row" layout-align="center center">
+        <oadn-photo ng-model="alias.image" class="alias-photo"></oadn-photo>
+        <div layout="column">
+          <md-input-container>
+            <label>Alias Name</label>
+            <input type="text" ng-model="alias.name">
+          </md-input-container>
+          <md-input-container>
+            <label>Identifier</label>
+            <input type="text" ng-model="alias.id">
+          </md-input-container>
+          <md-button>Add</md-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</script>

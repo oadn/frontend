@@ -14,6 +14,57 @@ html {
 .min400 {
   min-width: 400px;
 }
+
+.vertical-divider {
+  border-left: 1px solid grba(0,0,0,0.12);
+  height: 100%;
+}
+
+.alias-chips {
+  margin-bottom: 20px;
+}
+
+.alias-photo {
+  margin-right: 10px;
+}
+
+.oadn-chip {
+  padding: 0px !important;
+  border-radius: 20px !important;
+  height: 40px !important;
+}
+
+.oadn-contact-avatar {
+  float: left;
+}
+
+.oadn-avatar {
+  height: 38px;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.oadn-contact-data {
+  display: inline-block;
+  height: 40px;
+  margin-left: 8px;
+  h3 {
+    margin: 0px;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(0,0,0,0.87);
+    line-height: 1.2em;
+    letter-spacing: 0.010em;
+  }
+  div {
+    margin: 0px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(0,0,0,0.54);
+    line-height: 1.2em;
+    letter-spacing: 0.010em;
+  }
+}
 /*
 [layout=row] {
   flex-direction: row;

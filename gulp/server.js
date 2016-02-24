@@ -59,6 +59,7 @@ gulp.task('serve', ['watch', 'serve:backend'], function () {
   var server = gls(index, {env: env});
   server.start();
   gulp.watch([path.join(conf.paths.src, '**/*')], function(file) {
+    console.log('file '+file+' changed');
     server.notify.apply(server, [file]);
   });
   gulp.watch([index], server.start.bind(server));

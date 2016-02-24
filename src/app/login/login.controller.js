@@ -7,14 +7,16 @@
 
   /** @ngInject */
   function LoginController($scope) {
+    $scope.data={};
     $scope.formTitle = "Login";
     $scope.formFields = {
       user: {
         inputType: 'text',
-        placeholder: 'User Name'
+        label: 'User Name'
       },
       pass: {
         inputType: 'password',
+        label: 'Password',
         required: true
       }
     }

@@ -1,0 +1,29 @@
+<div>
+  <h4>Sign In Data</h4>
+  <div layout="row" layout-align="center stretch">
+    <div layout="column">
+      <p>Enter Sign In Data {{a}}</p>
+      <form ng-submit="signIn()">
+        <div layout="column">
+          <md-input-container>
+            <label>Mail</label>
+            <input type="email" ng-model="sign.mail">
+          </md-input-container>
+          <md-input-container>
+            <label>Password</label>
+            <input type="password" ng-model="sign.pass">
+          </md-input-container>
+          <md-input-container>
+            <label>Confirm Password</label>
+            <input type="password" ng-model="sign.confirm">
+          </md-input-container>
+          <md-button type="submit">Submit</md-button>
+        </div>
+      </form>
+    </div>
+    <div layout="column"><div flex></div>OR<div flex></div></div>
+    <div layout="column">
+      <p>Register through external account</p>
+    </div>
+  </div>
+</div>

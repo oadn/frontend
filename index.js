@@ -16,8 +16,16 @@ var sessionMiddleware = session({
     secret: "c76f1109b5c6b41c88e40181b733cd2c",
 });
 
+var isAuthenticated = function(req, res, next) {
+  if(!req.session.user) {
+    res.statusCode = 401;
+    return res.end();
+  }
+  next();
+};
+
 app.use(sessionMiddleware);
-switch(process.env.NODE_ENV) {
+/*switch(process.env.NODE_ENV) {
   case "development":
     app.use(function(req, res, next) {
       console.log('tmp '+req.url);
@@ -35,17 +43,24 @@ switch(process.env.NODE_ENV) {
     console.log('modo no dev');
     app.use(express.static(path.join(__dirname, 'static')));
     break;
-}
+}*/
 
-app.get('/backend', function(req, res, next) {
-  res.send('ok');
-  console.log(req.session);
+app.use(express.static(path.join(__dirname, 'src')));
+app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
+
+var vUrl = config.backend.url+'/api/'+config.backend.version;
+app.use('/backend', function(req, res, next) {
+  req.pipe(request(vUrl+req.url)).pipe(res);
 });
 
-http.listen(3000);
+http.listen(config.port);
 
 io.use(function(socket, next) {
   sessionMiddleware(socket.request, socket.request.res, next);
+});
+
+io.use(function(socket, next) {
+  isAuthenticated(socket.request, socket.request.res, next);
 });
 
 io.on('connection', function(socket) {
@@ -53,7 +68,6 @@ io.on('connection', function(socket) {
   Object.observe(session, function(changes) {
     session.save();
   });
-  var vUrl = config.backend.url+'/api/'+config.backend.version;
   socket.on('schema', function(schema) {
     var url = vUrl+'/'+schema+'/schema';
     var keyBlackList = ['salt'];

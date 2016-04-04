@@ -9,8 +9,8 @@
   function config($logProvider, toastr, $mdThemingProvider) {
 
     $mdThemingProvider.theme('default')
-      .primaryPalette('teal')
-      .accentPalette('deep-orange');
+      .primaryPalette('blue-grey')
+      .accentPalette('indigo');
     // Enable log
     $logProvider.debugEnabled(true);
 

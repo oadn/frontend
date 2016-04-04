@@ -22,6 +22,21 @@
         url: 'register',
         templateUrl: 'app/register/register.html',
         controller: 'RegisterController'
+      })
+      .state('home.register.signIn', {
+        url: '/singIn',
+        templateUrl: 'app/register/signIn.html',
+        controller: 'SignInController'
+      })
+      .state('home.register.alias', {
+        url: '/alias/:id',
+        templateUrl: 'app/register/alias.html',
+        controller: 'AliasController'
+      })
+      .state('home.project', {
+        url: '/project',
+        templateUrl: 'app/project/project.html',
+        controller: 'ProjectController'
       });
 
     $urlRouterProvider.otherwise('/');

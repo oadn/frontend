@@ -11,7 +11,11 @@
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
     <!-- bower:css -->
-    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="/bower_components/toastr/toastr.css" />
+    <link rel="stylesheet" href="/bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="/bower_components/angular-form-for/dist/form-for.css" />
+    <link rel="stylesheet" href="/bower_components/ng-img-crop/compile/minified/ng-img-crop.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link rel="stylesheet" href="/bower_components/angular-form-for/dist/form-for.material.css"/>
@@ -37,7 +41,7 @@
         <md-button ui-sref="home.login">
           Login
         </md-button>
-        <md-button ui-sref="home.register">
+        <md-button ui-sref="home.register.signIn">
           Register!
         </md-button>
       </div>
@@ -46,14 +50,43 @@
 
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
-    <!-- run `gulp inject` to automatically populate bower script dependencies -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+    <script src="/bower_components/malarkey/dist/malarkey.min.js"></script>
+    <script src="/bower_components/toastr/toastr.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
+    <script src="/bower_components/angular-socket-io/socket.js"></script>
+    <script src="/bower_components/angular-form-for/dist/form-for.js"></script>
+    <script src="/bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="/bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
+    <script src="/bower_components/webcam/dist/webcam.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script src="/bower_components/angular-form-for/dist/form-for.material-templates.js"></script>
 
     <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
     <!-- inject:js -->
-    <!-- js files will be automatically insert here -->
+    <script src="app/components/photo/photo.directive.js"></script>
+    <script src="app/index.module.js"></script>
+    <script src="app/components/navbar/navbar.directive.js"></script>
+    <script src="app/register/register.controller.js"></script>
+    <script src="app/project/project.js"></script>
+    <script src="app/main/main.controller.js"></script>
+    <script src="app/login/login.controller.js"></script>
+    <script src="app/index.run.js"></script>
+    <script src="app/index.route.js"></script>
+    <script src="app/index.factory.js"></script>
+    <script src="app/index.constants.js"></script>
+    <script src="app/index.config.js"></script>
     <!-- endinject -->
 
     <!-- inject:partials -->
